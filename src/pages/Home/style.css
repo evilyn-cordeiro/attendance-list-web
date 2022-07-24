@@ -1,5 +1,61 @@
 .container {
   width: 100%;
   height: 100vh;
-  background: pink;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #004;
+}
+
+.inner-container {
+  width: 50%;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: blueviolet;
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  font-size: 16px;
+  color:blueviolet;
+}
+
+input:focus {
+  outline: none;
+  border-color: blueviolet;
+}
+
+button {
+  width: 100%;
+  height: 40px;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  font-size: 18px;
+  cursor: pointer;
+
+  background: blueviolet;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
 }
