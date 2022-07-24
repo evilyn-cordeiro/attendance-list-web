@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from '../../components';
 // style
 import './style.css';
 
+const urlGitHub = ('https://api.github.com/users/evilyn-araujo');
+
 export default function HomeScreen() {
   const [studentName, setStudentName] = useState('');
   const [students, setStudents] = useState([]);
+  const [user, setUser] = useState([]);
 
   function handleAddStudent() {
     const newStudent = {
@@ -20,10 +23,28 @@ export default function HomeScreen() {
     setStudents(prevState => [...prevState, newStudent]);
   }
 
+  useEffect(() => {
+    fetch(urlGitHub)
+      .then((data) => data.json())
+      .then((userData) => {
+        setUser({
+          name: userData.name,
+          avatar: userData.avatar_url,
+        })
+      })
+      .catch((error) => alert(error));
+  }, []);
+
   return (
     <div className={'container'}>
       <div className={'inner-container'}>
-        <h1 className={'title'}>LISTA DE PRESENÇA</h1>
+        <header>
+          <h1 className={'title'}>LISTA DE PRESENÇA</h1>
+          <div>
+            <strong>{user.name}</strong>
+            <img src={user.avatar} alt="Foto de perfil" />
+          </div>
+        </header>
         <input
           type={'text'}
           placeholder={'Digite o nome...'}
@@ -37,9 +58,9 @@ export default function HomeScreen() {
         </button>
 
         {
-          students.map((item, key) =>
+          students.map((item) =>
             <Card
-              id={key.time}
+              key={item.time}
               name={item.name}
               time={item.time}
             />

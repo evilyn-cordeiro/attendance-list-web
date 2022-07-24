@@ -9,6 +9,30 @@
   background-color: #004;
 }
 
+.container header{
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.container header div{
+  width: 50%;
+  display: flex;
+  align-items: center;
+
+  color: blueviolet;
+  font-size: 14px;
+}
+
+.container img{
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50px;
+  margin-left: 20px;
+}
+
 .inner-container {
   width: 50%;
   height: fit-content;
@@ -21,10 +45,6 @@
 .title {
   width: 100%;
   height: fit-content;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   color: blueviolet;
 }
