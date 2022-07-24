@@ -39,6 +39,7 @@ export default function HomeScreen() {
         {
           students.map((item, key) =>
             <Card
+              id={key.time}
               name={item.name}
               time={item.time}
             />
