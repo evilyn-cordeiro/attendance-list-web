@@ -10,6 +10,11 @@ export default function HomeScreen() {
   const [students, setStudents] = useState([]);
   const [user, setUser] = useState([]);
 
+  // controla o valor do input
+  function handleInputValue(value) {
+    setStudentName(value)
+  }
+
   function handleAddStudent() {
     const newStudent = {
       name: studentName,
@@ -20,7 +25,16 @@ export default function HomeScreen() {
       })
     }
 
+    // quando não tiver "estudante informado, não adiciona a lista"
+    if (!studentName) {
+      return students
+    }
     setStudents(prevState => [...prevState, newStudent]);
+
+  }
+
+  function handleRemoveStudent(value) {
+    students.keys(value);
   }
 
   useEffect(() => {
@@ -48,7 +62,7 @@ export default function HomeScreen() {
         <input
           type={'text'}
           placeholder={'Digite o nome...'}
-          onChange={(value) => setStudentName(value.target.value)}
+          onChange={(value) => handleInputValue(value.target.value)}
         />
         <button
           type={'button'}
@@ -63,10 +77,11 @@ export default function HomeScreen() {
               key={item.time}
               name={item.name}
               time={item.time}
+              onClick={() => handleRemoveStudent(item.time)}
             />
           )
         }
       </div>
-    </div >
+    </div>
   );
 }

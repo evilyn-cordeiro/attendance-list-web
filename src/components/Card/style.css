@@ -24,3 +24,9 @@ small{
 strong{
   padding-left: 10px;
 }
+
+.buttonRemove{
+  width: 5rem;
+  padding-right: 10px;
+  background: none;
+}
